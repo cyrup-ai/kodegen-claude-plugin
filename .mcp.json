@@ -2,7 +2,7 @@
   "mcpServers": {
     "kodegen": {
       "command": "kodegen",
-      "args": ["--no-tls", "--toolset", "${CLAUDE_PLUGIN_ROOT}/config/core.json"],
+      "args": ["--no-tls", "--toolset", "core"],
       "env": {}
     }
   }
