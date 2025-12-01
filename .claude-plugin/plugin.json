@@ -1,0 +1,30 @@
+{
+  "name": "kodegen",
+  "version": "0.4.0",
+  "description": "Multi-agent task orchestration with 109 elite MCP tools for parallel development workflows",
+  "author": {
+    "name": "KODEGEN.AI",
+    "url": "https://kodegen.ai"
+  },
+  "homepage": "https://kodegen.ai/docs/claude-code",
+  "repository": "https://github.com/kodegen-ai/kodegen",
+  "license": "MIT",
+  "keywords": [
+    "task-orchestration",
+    "multi-agent",
+    "mcp",
+    "parallel-execution",
+    "automation",
+    "productivity",
+    "rust",
+    "code-search",
+    "filesystem",
+    "terminal",
+    "git",
+    "github",
+    "browser",
+    "web-research",
+    "memory",
+    "reasoning"
+  ]
+}
