@@ -1,7 +1,6 @@
 ---
 argument-hint: directory [directory]
-allowed-tools: 
-  - Task
+allowed-tools:
   - mcp__plugin_kodegen_kodegen__browser_agent
   - mcp__plugin_kodegen_kodegen__browser_research
   - mcp__plugin_kodegen_kodegen__claude_agent

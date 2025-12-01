@@ -1,5 +1,5 @@
 ---
-allowed-tools: 
+allowed-tools:
   - Task
   - mcp__plugin_kodegen_kodegen__browser_agent
   - mcp__plugin_kodegen_kodegen__browser_research
