@@ -51,7 +51,6 @@ If third party libraries are essential to the solution:
 - use `mcp__plugin_kodegen_kodegen__sequential_thinking` and ULTRATHINK to think step by step about the task
 - use `mcp__plugin_kodegen_kodegen__browser_web_search` if research on the web is needed for the task scope
 - use `mcp__plugin_kodegen_kodegen__scrape_url` if you find websites that are key to understanding the task to scrape the full website
-  - use `mcp__plugin_kodegen_kodegen__scrape_check_results` to check on the crawl status periodically
   - once completed use `mcp__plugin_kodegen_kodegen__scrape_search_results` to quickly find the most relevant information from the crawl results
 - use `mcp__plugin_kodegen_kodegen__fs_search` to search the local codebase and understand the architecture and relevant files that may need to be modified or built around
 - use `mcp__plugin_kodegen_kodegen__fs_read_file` and/or `mcp__plugin_kodegen_kodegen__fs_read_multiple_files` to read files

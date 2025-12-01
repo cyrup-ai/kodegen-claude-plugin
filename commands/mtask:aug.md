@@ -51,45 +51,18 @@ given these task files:
 
 ./task/GHMCP_1C.md
 ./task/GHMCP_1D.md
-./task/GHMCP_1E.md
 ./task/HTML_CLEANER_02_silent_regex_errors.md
 ./task/HTML_CLEANER_04_string_allocation_overhead.md
 ./task/HTML_CLEANER_05_nested_div_regex_bug.md
-./task/HTML_CLEANER_07_dead_code_cleaned_html.md
-./task/HTML_CLEANER_08_pointer_comparison_bug.md
-./task/HTML_CLEANER_09_confused_node_iteration_logic.md
-./task/HTML_CLEANER_10_selector_parsing_in_loop.md
 .task/INLINE_CSS_01_sequential_processing_bottleneck.md
 ./task/INLINE_CSS_02_wasteful_html_cloning.md
 ./task/INLINE_CSS_03_sequential_downloads_in_from_info.md
-./task/JS_SCRIPTS_01_certificate_info_stub.md
-./task/JS_SCRIPTS_02_unreliable_format_detection.md
-./task/JS_SCRIPTS_03_media_null_pointer_risk.md
-./task/JS_SCRIPTS_04_metadata_overwrite_bug.md
-./task/JS_SCRIPTS_05_keyword_splitting_naive.md
-./task/KROMEKOVER_03_sequential_script_injection.md
-./task/KROMEKOVER_05_duplicate_utils_files.md
-./task/KROMEKOVER_06_silent_error_handling.md
-./task/KROMEKOVER_07_incorrect_script_path.md
-./task/MAIN_CRAWL_01_hardcoded_domain.md
-./task/MAIN_CRAWL_02_incomplete_js_stub.md
-./task/MAIN_CRAWL_03_unsafe_url_filename_conversion.md
-./task/PAGE_DATA_01_unused_link_rewriter_param.md
-./task/PAGE_DATA_02_sequential_async_defeats_parallelism.md
-./task/PAGE_DATA_03_extracted_data_ignored.md
-./task/SEARCH_01_nested_spawn_blocking_antipattern.md
-./task/SEARCH_03_writer_lifetime_prevents_parallelization.md
 
 *we can see that these groupings are mutually independent*:
 
 - GHMCP
 - HTML_CLEANER
 - INLINE_CSS
-- JS_SCRIPTS
-- KROMEKOVER
-- MAIN_CRAWL
-- PAGE_DATA
-- SEARCH
 
 Given this, we can execute 1 task from each grouping in parallel, and ensure our subagents aren't "stepping on each other's toes". We'd parallelize 1 from each namespace, then once completed, anther from each namespace, etc. until all task files are cleared.
 
