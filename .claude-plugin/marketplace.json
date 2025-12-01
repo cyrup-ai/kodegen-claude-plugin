@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "pluginRoot": "."
   },
   "plugins": [
@@ -22,9 +22,23 @@
       "homepage": "https://kodegen.ai",
       "repository": "https://github.com/cyrup-ai/kodegen",
       "license": "MIT",
-      "keywords": ["mcp", "multi-agent", "task-orchestration", "rust", "code-search"],
+      "keywords": [
+        "mcp",
+        "multi-agent",
+        "task-orchestration",
+        "rust",
+        "code-search"
+      ],
       "category": "developer-tools",
-      "tags": ["filesystem", "terminal", "git", "github", "browser", "memory", "reasoning"]
+      "tags": [
+        "filesystem",
+        "terminal",
+        "git",
+        "github",
+        "browser",
+        "memory",
+        "reasoning"
+      ]
     }
   ]
 }

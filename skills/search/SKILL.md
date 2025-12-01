@@ -11,7 +11,7 @@ version: 0.1.0
 
 ## Core Concept
 
-`mcp__kodegen__fs_search` is built on ripgrep - the fastest code search tool available (10-100x faster than grep). It automatically respects .gitignore, supports regex and literal search, handles multiline patterns, and can run searches in the background.
+`mcp__plugin_kodegen_kodegen__fs_search` is built on ripgrep - the fastest code search tool available (10-100x faster than grep). It automatically respects .gitignore, supports regex and literal search, handles multiline patterns, and can run searches in the background.
 
 ## Two Independent Controls
 
