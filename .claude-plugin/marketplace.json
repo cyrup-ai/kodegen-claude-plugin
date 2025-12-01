@@ -12,7 +12,7 @@
   "plugins": [
     {
       "name": "kodegen",
-      "source": ".",
+      "source": "./",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
       "version": "0.5.0",
       "author": {
