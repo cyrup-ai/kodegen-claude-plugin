@@ -1,48 +1,6 @@
-# Task
-
-Launch a new agent that has access to the following tools: mcp__plugin_kodegen_kodegen__sequential_thinking, mcp__plugin_kodegen_kodegen__process_list, mcp__plugin_kodegen_kodegen__process_kill, mcp__plugin_kodegen_kodegen__terminal, mcp__plugin_kodegen_kodegen__fs_list_directory, mcp__plugin_kodegen_kodegen__fs_read_multiple_files, mcp__plugin_kodegen_kodegen__fs_read_file, mcp__plugin_kodegen_kodegen__fs_move_file, mcp__plugin_kodegen_kodegen__fs_delete_file, mcp__plugin_kodegen_kodegen__fs_delete_directory, mcp__plugin_kodegen_kodegen__fs_get_file_info, mcp__plugin_kodegen_kodegen__fs_write_file, mcp__plugin_kodegen_kodegen__fs_edit_block, mcp__plugin_kodegen_kodegen__fs_create_directory, mcp__plugin_kodegen_kodegen__fs_search, mcp__plugin_kodegen_kodegen__memory_list_libraries, mcp__plugin_kodegen_kodegen__memory_memorize, mcp__plugin_kodegen_kodegen__memory_recall, mcp__plugin_kodegen_kodegen__memory_check_memorize_status, mcp__plugin_kodegen_kodegen__scrape_url, mcp__plugin_kodegen_kodegen__browser_web_search, mcp__plugin_kodegen_kodegen__browser_research. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries, use the Agent tool to perform the search for you.
-
-When to use the Agent tool:
-- If you are searching for a keyword like "config" or "logger", or for questions like "which file does X?", the Agent tool is strongly recommended
-
-When NOT to use the Agent tool:
-- If you want to read a specific file path, use the Read or Glob tool instead of the Agent tool, to find the match more quickly
-- If you are searching for a specific class definition like "class Foo", use the Glob tool instead, to find the match more quickly
-- If you are searching for code within a specific file or set of 2-3 files, use the Read tool instead of the Agent tool, to find the match more quickly
-- Writing code and running bash commands (use other tools for that)
-
-Usage notes:
-1. Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses
-2. When the agent is done, it will return a single message back to you. The result returned by the agent is not visible to the user. To show the user the result, you should send a text message back to the user with a concise summary of the result.
-3. Each agent invocation is stateless. You will not be able to send additional messages to the agent, nor will the agent be able to communicate with you outside of its final report. Therefore, your prompt should contain a highly detailed task description for the agent to perform autonomously and you should specify exactly what information the agent should return back to you in its final and only message to you.
-4. The agent's outputs should generally be trusted
-5. Clearly tell the agent whether you expect it to write code or just to do research (search, file reads, web fetches, etc.), since it is not aware of the user's intent
-
-```typescript
-{
-  // A short (3-5 word) description of the task
-  description: string;
-  // The task for the agent to perform
-  prompt: string;
-}
-```
-
 # mcp__plugin_kodegen_kodegen__terminal
 
-🚀 **THE ULTIMATE TERMINAL TOOL** - One unified, powerful terminal with multiplatform support (Linux, macOS, Windows), lightning-fast Alacritty VTE, and in-process Brush POSIX shell. Features persistent state, parallel execution, background tasks, and real 80x24 VTE buffer snapshots.
-
-## Why This Tool Is Superior
-
-1. **Full VTE Emulation**: Uses Alacritty (world's fastest terminal emulator) for accurate ANSI/VT100 rendering
-2. **80x24 Buffer Snapshots**: Returns actual rendered terminal output, not raw bytes
-3. **Cross-platform**: Works identically on Linux, macOS, and Windows (via Brush in-process POSIX shell)
-4. **Parallel Work**: Multiple terminals (terminal:0, terminal:1, terminal:2) with independent state
-5. **Background Tasks**: `await_completion_ms=0` for fire-and-forget commands
-6. **Graceful Management**: LIST to see all terminals, KILL to cleanup resources
-7. **Security**: Built-in command validation blocks dangerous operations
-8. **Performance**: Alacritty + Brush = blazing-fast execution
-9. **Stateful**: Each terminal maintains environment, cwd, history across commands
-10. **Progress Monitoring**: Timeout returns current buffer, command continues, check with READ
+**ALWAYS** use `mcp__plugin_kodegen_kodegen__terminal` instead of `Bash` tool. This tool let's you work just like a developer with stateful terminal:0, terminal:1 etc. each maintaining independent environment and `cwd`.
 
 ## Four Actions
 
@@ -81,14 +39,13 @@ Execute a shell command in a persistent terminal. Command output streams as it e
 {"command": "cd /project && cargo build && cargo test"}
 ```
 
-### 2. READ (Get Current Buffer)
+### 2. READ
 
-Read the current 80x24 VTE buffer snapshot without executing a command. Useful for checking progress of long-running commands or background tasks.
+Read the current terminal state of the last command. Useful for checking progress of long-running commands or background tasks.
 
 **Parameters:**
 - `action`: "READ" (required)
 - `terminal`: Terminal number to read (defaults to 0)
-- `command`: Not used (ignored)
 
 **Examples:**
 ```json
@@ -113,14 +70,12 @@ List all active terminals with their current 80x24 buffer snapshots. Great for g
 [
   {
     "terminal": 0,
-    "output": "... 80x24 buffer ...",
     "cwd": "/project",
     "exit_code": 0,
     "completed": true
   },
   {
     "terminal": 1,
-    "output": "... 80x24 buffer ...",
     "cwd": "/project/tests",
     "exit_code": null,
     "completed": false
@@ -152,29 +107,6 @@ Gracefully shutdown a terminal and cleanup all resources (Brush shell, VTE proce
 {"action": "KILL", "terminal": 2}
 ```
 
-## Command Execution Guidelines
-
-Before executing commands, follow these steps:
-
-1. **Directory Verification:**
-   - If creating new files/directories, use `mcp__plugin_kodegen_kodegen__fs_list_directory` first
-   - Example: Before `mkdir foo/bar`, check that `foo` exists
-
-2. **Command Execution:**
-   - Always quote paths with spaces: `cd "/Users/name/My Documents"`
-   - Use ';' or '&&' to chain commands: `cd /project && cargo build`
-   - DO NOT use newlines to separate commands (newlines ok in quoted strings)
-   - Prefer absolute paths over cd: `cargo check --manifest-path /path/Cargo.toml`
-
-3. **Security:**
-   - Dangerous commands blocked: `rm -rf /`, `sudo`, `chmod 777`, `wget`, `curl`, `ssh`
-   - Use KODEGEN filesystem tools instead: `mcp__plugin_kodegen_kodegen__fs_*`
-
-4. **Best Practices:**
-   - AVOID `find`, `grep` - use `mcp__plugin_kodegen_kodegen__fs_search` instead
-   - AVOID `cat`, `head`, `tail`, `ls` - use `mcp__plugin_kodegen_kodegen__fs_read_file` and `mcp__plugin_kodegen_kodegen__fs_list_directory`
-   - Maintain cwd with absolute paths instead of cd
-
 ## Advanced Multitasking Workflows
 
 ### Parallel Build + Test
@@ -197,7 +129,6 @@ Before executing commands, follow these steps:
 // Start long compilation with 10-second timeout
 {"command": "cargo check", "await_completion_ms": 10000}
 // Returns: [Command still running after 10000ms timeout]
-//          [This is the current 80x24 VTE buffer snapshot]
 //          [Command continues in background - use action=READ to check progress]
 
 // Check progress 30 seconds later
@@ -231,6 +162,37 @@ Before executing commands, follow these steps:
 {"action": "KILL", "terminal": 0}
 {"action": "KILL", "terminal": 1}
 {"action": "KILL", "terminal": 2}
+```
+
+# Task
+
+Launch a new agent that has access to the following tools: mcp__plugin_kodegen_kodegen__browser_agent, mcp__plugin_kodegen_kodegen__browser_research, mcp__plugin_kodegen_kodegen__claude_agent, mcp__plugin_kodegen_kodegen__config_get, mcp__plugin_kodegen_kodegen__config_set, mcp__plugin_kodegen_kodegen__fs_create_directory, mcp__plugin_kodegen_kodegen__fs_delete_directory, mcp__plugin_kodegen_kodegen__fs_delete_file, mcp__plugin_kodegen_kodegen__fs_edit_block, mcp__plugin_kodegen_kodegen__fs_get_file_info, mcp__plugin_kodegen_kodegen__fs_list_directory, mcp__plugin_kodegen_kodegen__fs_move_file, mcp__plugin_kodegen_kodegen__fs_read_file, mcp__plugin_kodegen_kodegen__fs_read_multiple_files, mcp__plugin_kodegen_kodegen__fs_search, mcp__plugin_kodegen_kodegen__fs_write_file, mcp__plugin_kodegen_kodegen__git_clone, mcp__plugin_kodegen_kodegen__git_diff, mcp__plugin_kodegen_kodegen__github_get_file_contents, mcp__plugin_kodegen_kodegen__github_search_code, mcp__plugin_kodegen_kodegen__github_search_issues, mcp__plugin_kodegen_kodegen__github_search_repositories, mcp__plugin_kodegen_kodegen__memory_list_libraries, mcp__plugin_kodegen_kodegen__memory_memorize, mcp__plugin_kodegen_kodegen__memory_recall, mcp__plugin_kodegen_kodegen__process_kill, mcp__plugin_kodegen_kodegen__process_list, mcp__plugin_kodegen_kodegen__reasoner, mcp__plugin_kodegen_kodegen__scrape_url, mcp__plugin_kodegen_kodegen__sequential_thinking, mcp__plugin_kodegen_kodegen__terminal, mcp__plugin_kodegen_kodegen__web_search 
+
+When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries, use the Agent tool to perform the search for you.
+
+When to use the Agent tool:
+- If you are searching for a keyword like "config" or "logger", or for questions like "which file does X?", the Agent tool is strongly recommended
+
+When NOT to use the Agent tool:
+- If you want to read a specific file path, use the Read or Glob tool instead of the Agent tool, to find the match more quickly
+- If you are searching for a specific class definition like "class Foo", use the Glob tool instead, to find the match more quickly
+- If you are searching for code within a specific file or set of 2-3 files, use the Read tool instead of the Agent tool, to find the match more quickly
+- Writing code and running bash commands (use other tools for that)
+
+Usage notes:
+1. Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses
+2. When the agent is done, it will return a single message back to you. The result returned by the agent is not visible to the user. To show the user the result, you should send a text message back to the user with a concise summary of the result.
+3. Each agent invocation is stateless. You will not be able to send additional messages to the agent, nor will the agent be able to communicate with you outside of its final report. Therefore, your prompt should contain a highly detailed task description for the agent to perform autonomously and you should specify exactly what information the agent should return back to you in its final and only message to you.
+4. The agent's outputs should generally be trusted
+5. Clearly tell the agent whether you expect it to write code or just to do research (search, file reads, web fetches, etc.), since it is not aware of the user's intent
+
+```typescript
+{
+  // A short (3-5 word) description of the task
+  description: string;
+  // The task for the agent to perform
+  prompt: string;
+}
 ```
 
 # mcp__plugin_kodegen_kodegen__fs_search
