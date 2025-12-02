@@ -1,6 +1,6 @@
 {
   "name": "kodegen",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Multi-agent task orchestration with 109 elite MCP tools for parallel development workflows",
   "author": {
     "name": "KODEGEN.AI",
@@ -26,6 +26,5 @@
     "web-research",
     "memory",
     "reasoning"
-  ],
-  "hooks": "./hooks/hooks.json"
+  ]
 }
