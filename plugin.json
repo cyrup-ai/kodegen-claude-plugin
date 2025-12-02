@@ -7,7 +7,7 @@
     "url": "https://kodegen.ai"
   },
   "homepage": "https://kodegen.ai/",
-  "repository": "https://github.com/kodegen-ai/kodegen",
+  "repository": "https://github.com/kodegen-ai/kodegen-claude-plugin",
   "license": "MIT",
   "keywords": [
     "task-orchestration",
