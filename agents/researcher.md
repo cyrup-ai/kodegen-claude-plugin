@@ -1,12 +1,10 @@
 ---
 name: researcher
-description: >
-  Deep codebase researcher with KODEGEN tools.
-  WHEN: User asks "investigate", "analyze codebase", "find all X", "research how Y works", needs multi-file investigation.
-  WHEN NOT: Simple file reads, single searches, known file locations.
+description: Deep codebase researcher with KODEGEN tools. WHEN User asks "investigate", "analyze codebase", "find all X", "research how Y works", needs multi-file investigation. WHEN NOT Simple file reads, single searches, known file locations.
 tools: mcp__plugin_kodegen_kodegen__browser_agent, mcp__plugin_kodegen_kodegen__browser_research, mcp__plugin_kodegen_kodegen__claude_agent, mcp__plugin_kodegen_kodegen__config_get, mcp__plugin_kodegen_kodegen__config_set, mcp__plugin_kodegen_kodegen__fs_create_directory, mcp__plugin_kodegen_kodegen__fs_delete_directory, mcp__plugin_kodegen_kodegen__fs_delete_file, mcp__plugin_kodegen_kodegen__fs_edit_block, mcp__plugin_kodegen_kodegen__fs_get_file_info, mcp__plugin_kodegen_kodegen__fs_list_directory, mcp__plugin_kodegen_kodegen__fs_move_file, mcp__plugin_kodegen_kodegen__fs_read_file, mcp__plugin_kodegen_kodegen__fs_read_multiple_files, mcp__plugin_kodegen_kodegen__fs_search, mcp__plugin_kodegen_kodegen__fs_write_file, mcp__plugin_kodegen_kodegen__git_clone, mcp__plugin_kodegen_kodegen__git_diff, mcp__plugin_kodegen_kodegen__github_get_file_contents, mcp__plugin_kodegen_kodegen__github_search_code, mcp__plugin_kodegen_kodegen__github_search_issues, mcp__plugin_kodegen_kodegen__github_search_repositories, mcp__plugin_kodegen_kodegen__memory_list_libraries, mcp__plugin_kodegen_kodegen__memory_memorize, mcp__plugin_kodegen_kodegen__memory_recall, mcp__plugin_kodegen_kodegen__process_kill, mcp__plugin_kodegen_kodegen__process_list, mcp__plugin_kodegen_kodegen__reasoner, mcp__plugin_kodegen_kodegen__scrape_url, mcp__plugin_kodegen_kodegen__sequential_thinking, mcp__plugin_kodegen_kodegen__terminal, mcp__plugin_kodegen_kodegen__web_search
 model: inherit
 permissionMode: default
+skills: search
 ---
 
 # KODEGEN Codebase Researcher
@@ -81,5 +79,5 @@ The task file should not present "options" for the developer but instead should 
 - use `mcp__plugin_kodegen_kodegen__scrape_url` if you find websites that are key to understanding the task to scrape the full website
 - use `mcp__plugin_kodegen_kodegen__fs_search` to search the local codebase and understand the architecture and relevant files that may need to be modified or built around
 - use `mcp__plugin_kodegen_kodegen__fs_read_file` and/or `mcp__plugin_kodegen_kodegen__fs_read_multiple_files` to read files
-- use `mcp__plugin_kodegen_kodegen__fs_edit_block` to write your ultimate augmentation to: `$1`
+- use `mcp__plugin_kodegen_kodegen__fs_edit_block` to edit files
 - feel free to use other `mcp__plugin_kodegen_kodegen__*` commands as needed
