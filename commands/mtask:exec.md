@@ -118,3 +118,6 @@ DO NOT USE `git` commands of any type. other coders are coding and you will be d
 - do not use any tools outside `mcp__plugin_kodegen_kodegen__*` ... these tools have everything you need for task execution
 
 ```
+
+=================
+$ARGS

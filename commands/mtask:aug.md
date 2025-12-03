@@ -98,3 +98,6 @@ The task file should not present "options" for the developer but instead should 
   - if you need to make additional edits to the task file periodically, use `mcp__plugin_kodegen_kodegen__fs_edit_block` to make those edits
 - feel free to use other `mcp__plugin_kodegen_kodegen__*` commands as needed
 ```
+
+=================
+$ARGS
