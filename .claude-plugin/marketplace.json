@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.5.9",
+    "version": "0.6.0",
     "pluginRoot": "."
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "kodegen",
       "source": "./",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.5.9",
+      "version": "0.6.0",
       "author": {
         "name": "KODEGEN.AI",
         "email": "support@kodegen.ai"
