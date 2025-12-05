@@ -6,70 +6,7 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.6.0",
-    "pluginRoot": "."
-  },
-  "plugins": [
-    {
-      "name": "kg",
-      "source": "./plugins/kg",
-      "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.6.0",
-      "author": {
-        "name": "KODEGEN.AI",
-        "email": "support@kodegen.ai"
-      },
-      "homepage": "https://kodegen.ai",
-      "repository": "https://github.com/cyrup-ai/kodegen-claude-plugin",
-      "license": "MIT",
-      "keywords": [
-        "mcp",
-        "multi-agent",
-        "task-orchestration",
-        "rust",
-        "code-search"
-      ],
-      "category": "developer-tools",
-      "tags": [
-        "filesystem",
-        "terminal",
-        "git",
-        "github",
-        "browser",
-        "memory",
-        "reasoning"
-      ]
-    },
-    {
-      "name": "rust",
-      "source": "./plugins/rust",
-      "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.6.0",
-      "author": {
-        "name": "KODEGEN.AI",
-        "email": "support@kodegen.ai"
-      },
-      "homepage": "https://kodegen.ai",
-      "repository": "https://github.com/cyrup-ai/kodegen-claude-plugin",
-      "license": "MIT",
-      "keywords": [
-        "mcp",
-        "multi-agent",
-        "task-orchestration",
-        "rust",
-        "code-search"
-      ],
-      "category": "developer-tools",
-      "tags": [
-        "filesystem",
-        "terminal",
-        "git",
-        "github",
-        "browser",
-        "memory",
-        "reasoning",
-        "rust"
-      ]
-    }
-  ]
+    "version": "0.6.1",
+    "pluginRoot": "plugins"
+  }
 }
