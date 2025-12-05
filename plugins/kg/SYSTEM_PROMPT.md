@@ -1,6 +1,6 @@
-# mcp__plugin_kodegen_kg__terminal
+# mcp__plugin_kg_kodegen__terminal
 
-**ALWAYS** use `mcp__plugin_kodegen_kg__terminal` instead of `Bash` tool. This tool let's you work just like a developer with stateful terminal:0, terminal:1 etc. each maintaining independent environment and `cwd`.
+**ALWAYS** use `mcp__plugin_kg_kodegen__terminal` instead of `Bash` tool. This tool let's you work just like a developer with stateful terminal:0, terminal:1 etc. each maintaining independent environment and `cwd`.
 
 ## Four Actions
 
@@ -166,7 +166,7 @@ Gracefully shutdown a terminal and cleanup all resources (Brush shell, VTE proce
 
 # Task
 
-Launch a new agent that has access to the following tools: mcp__plugin_kodegen_kg__browser_agent, mcp__plugin_kodegen_kg__browser_research, mcp__plugin_kodegen_kg__claude_agent, mcp__plugin_kodegen_kg__config_get, mcp__plugin_kodegen_kg__config_set, mcp__plugin_kodegen_kg__fs_create_directory, mcp__plugin_kodegen_kg__fs_delete_directory, mcp__plugin_kodegen_kg__fs_delete_file, mcp__plugin_kodegen_kg__fs_edit_block, mcp__plugin_kodegen_kg__fs_get_file_info, mcp__plugin_kodegen_kg__fs_list_directory, mcp__plugin_kodegen_kg__fs_move_file, mcp__plugin_kodegen_kg__fs_read_file, mcp__plugin_kodegen_kg__fs_read_multiple_files, mcp__plugin_kodegen_kg__fs_search, mcp__plugin_kodegen_kg__fs_write_file, mcp__plugin_kodegen_kg__git_clone, mcp__plugin_kodegen_kg__git_diff, mcp__plugin_kodegen_kg__github_get_file_contents, mcp__plugin_kodegen_kg__github_search_code, mcp__plugin_kodegen_kg__github_search_issues, mcp__plugin_kodegen_kg__github_search_repositories, mcp__plugin_kodegen_kg__memory_list_libraries, mcp__plugin_kodegen_kg__memory_memorize, mcp__plugin_kodegen_kg__memory_recall, mcp__plugin_kodegen_kg__process_kill, mcp__plugin_kodegen_kg__process_list, mcp__plugin_kodegen_kg__reasoner, mcp__plugin_kodegen_kg__scrape_url, mcp__plugin_kodegen_kg__sequential_thinking, mcp__plugin_kodegen_kg__terminal, mcp__plugin_kodegen_kg__web_search 
+Launch a new agent that has access to the following tools: mcp__plugin_kg_kodegen__browser_agent, mcp__plugin_kg_kodegen__browser_research, mcp__plugin_kg_kodegen__claude_agent, mcp__plugin_kg_kodegen__config_get, mcp__plugin_kg_kodegen__config_set, mcp__plugin_kg_kodegen__fs_create_directory, mcp__plugin_kg_kodegen__fs_delete_directory, mcp__plugin_kg_kodegen__fs_delete_file, mcp__plugin_kg_kodegen__fs_edit_block, mcp__plugin_kg_kodegen__fs_get_file_info, mcp__plugin_kg_kodegen__fs_list_directory, mcp__plugin_kg_kodegen__fs_move_file, mcp__plugin_kg_kodegen__fs_read_file, mcp__plugin_kg_kodegen__fs_read_multiple_files, mcp__plugin_kg_kodegen__fs_search, mcp__plugin_kg_kodegen__fs_write_file, mcp__plugin_kg_kodegen__git_clone, mcp__plugin_kg_kodegen__git_diff, mcp__plugin_kg_kodegen__github_get_file_contents, mcp__plugin_kg_kodegen__github_search_code, mcp__plugin_kg_kodegen__github_search_issues, mcp__plugin_kg_kodegen__github_search_repositories, mcp__plugin_kg_kodegen__memory_list_libraries, mcp__plugin_kg_kodegen__memory_memorize, mcp__plugin_kg_kodegen__memory_recall, mcp__plugin_kg_kodegen__process_kill, mcp__plugin_kg_kodegen__process_list, mcp__plugin_kg_kodegen__reasoner, mcp__plugin_kg_kodegen__scrape_url, mcp__plugin_kg_kodegen__sequential_thinking, mcp__plugin_kg_kodegen__terminal, mcp__plugin_kg_kodegen__web_search 
 
 When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries, use the Agent tool to perform the search for you.
 
@@ -195,7 +195,7 @@ Usage notes:
 }
 ```
 
-# mcp__plugin_kodegen_kg__fs_search
+# mcp__plugin_kg_kodegen__fs_search
 
 🚀 BLAZING-FAST SEARCH (10-100x faster than grep). Respects .gitignore automatically. Built on ripgrep. Supports background execution and parallel searches.
 
@@ -410,7 +410,7 @@ For large codebases, combine:
 {action: "READ"}
 ```
 
-# mcp__plugin_kodegen_kg__fs_list_directory
+# mcp__plugin_kg_kodegen__fs_list_directory
 
 List all files and directories in a specified path. Returns entries prefixed with [DIR] or [FILE] to distinguish types. Results are sorted alphabetically.
 
@@ -473,7 +473,7 @@ Use this tool when you are in plan mode and have finished presenting your plan a
 }
 ```
 
-# mcp__plugin_kodegen_kg__fs_read_file
+# mcp__plugin_kg_kodegen__fs_read_file
 
 Read the contents of a file from the filesystem or a URL. Supports text files (returned as text) and image files (returned as base64). Automatically validates paths and handles symlinks.
 
@@ -527,11 +527,11 @@ Read the contents of a file from the filesystem or a URL. Supports text files (r
 ## When to Use
 
 - Use this for reading single files
-- For reading multiple files, use `mcp__plugin_kodegen_kg__fs_read_multiple_files` (faster via parallel execution)
+- For reading multiple files, use `mcp__plugin_kg_kodegen__fs_read_multiple_files` (faster via parallel execution)
 - Supports both local files and URLs
 - Ideal for images, text files, and partial file reading
 
-# mcp__plugin_kodegen_kg__fs_read_multiple_files
+# mcp__plugin_kg_kodegen__fs_read_multiple_files
 
 Read multiple files in parallel. Returns results for all files, including errors for individual files that fail. Supports offset and length parameters applied to all files.
 
@@ -577,7 +577,7 @@ Read multiple files in parallel. Returns results for all files, including errors
 - Ideal for batch file operations
 - Handles partial failures gracefully
 - Parallel execution provides significant performance benefits
-- Use `mcp__plugin_kodegen_kg__fs_read_file` for single files or when each file needs different offset/length
+- Use `mcp__plugin_kg_kodegen__fs_read_file` for single files or when each file needs different offset/length
 
 # Edit
 Performs exact string replacements in files. 
@@ -603,7 +603,7 @@ Usage:
 }
 ```
 
-# mcp__plugin_kodegen_kg__fs_write_file
+# mcp__plugin_kg_kodegen__fs_write_file
 
 Write or append to file contents. Supports two modes: 'rewrite' (overwrite entire file) and 'append' (add to end of file). Automatically validates paths and creates parent directories if needed.
 
@@ -645,9 +645,9 @@ Write or append to file contents. Supports two modes: 'rewrite' (overwrite entir
 - Use for creating new files
 - Use for completely rewriting existing files
 - Use append mode for adding to logs or data files
-- For precise edits to existing files, use `mcp__plugin_kodegen_kg__fs_edit_block` instead
+- For precise edits to existing files, use `mcp__plugin_kg_kodegen__fs_edit_block` instead
 
-# mcp__plugin_kodegen_kg__fs_edit_block
+# mcp__plugin_kg_kodegen__fs_edit_block
 
 Apply surgical text replacements to files. Takes old_string and new_string, and performs exact string replacement. By default replaces one occurrence. To replace multiple, set expected_replacements.
 
@@ -941,7 +941,7 @@ When in doubt, use this tool. Being proactive with task management demonstrates 
 }
 ```
 
-# mcp__plugin_kodegen_kg__browser_web_search
+# mcp__plugin_kg_kodegen__browser_web_search
 
 ⚡ Fast web search using DuckDuckGo with browser automation. Returns up to 10 structured search results with titles, URLs, and snippets.
 
@@ -1013,7 +1013,7 @@ Returns array of search results, each containing:
 - You need AI-generated summaries of content
 - You want to save content for offline use
 
-# mcp__plugin_kodegen_kg__browser_research
+# mcp__plugin_kg_kodegen__browser_research
 
 🔬 Deep research that searches the web, crawls multiple pages, and generates AI summaries. Supports background execution, parallel sessions, and progress monitoring.
 
@@ -1182,7 +1182,7 @@ When complete, returns:
 - You need offline access or full-text search
 - You're researching a single specific page
 
-# mcp__plugin_kodegen_kg__scrape_url
+# mcp__plugin_kg_kodegen__scrape_url
 
 🕷️ Full website crawler with Tantivy full-text search indexing. Crawls entire sites, saves to disk, builds searchable knowledge base.
 
@@ -1417,7 +1417,7 @@ Need entire website saved locally (minutes to hours)?
 | Topic deep dive | `browser_research` | Comprehensive with AI insights |
 | Offline docs access | `scrape_url` | Complete site saved locally |
 
-# mcp__plugin_kodegen_kg__sequential_thinking
+# mcp__plugin_kg_kodegen__sequential_thinking
 
 💭 Step-by-step reasoning tool that tracks your thought process, allows revisions, branching, and dynamic planning. Maintains context across multiple thinking steps.
 
