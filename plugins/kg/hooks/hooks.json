@@ -2,7 +2,7 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "mcp__plugin_kodegen_kodegen__terminal",
+        "matcher": "mcp__plugin_kodegen_kg__terminal",
         "hooks": [
           {
             "type": "command",

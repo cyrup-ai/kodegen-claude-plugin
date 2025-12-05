@@ -1,0 +1,30 @@
+{
+  "name": "rust",
+  "version": "0.6.0",
+  "description": "Rust language-specific Claude Code skills, agents, commands and hooks",
+  "author": {
+    "name": "KODEGEN.AI",
+    "url": "https://kodegen.ai"
+  },
+  "homepage": "https://kodegen.ai/",
+  "repository": "https://github.com/kodegen-ai/kodegen-claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "task-orchestration",
+    "multi-agent",
+    "mcp",
+    "parallel-execution",
+    "automation",
+    "productivity",
+    "rust",
+    "code-search",
+    "filesystem",
+    "terminal",
+    "git",
+    "github",
+    "browser",
+    "web-research",
+    "memory",
+    "reasoning"
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: cargo check
 description: runs `cargo check` and `cargo clippy` || summarizes and researches all errors and warnings into clear and actionable remdiation instructions.
-tools: mcp__plugin_kodegen_kodegen__terminal, mcp__plugin_kodegen_kodegen__fs_search, mcp__plugin_kodegen_kodegen__sequential_thinking, mcp__plugin_kodegen_kodegen__web_search, mcp__plugin_kodegen_kodegen__scrape_url, mcp__plugin_kodegen_kodegen__fs_read_file, mcp__plugin_kodegen_kodegen__fs_read_multiple_files
+tools: mcp__plugin_kodegen_kg__terminal, mcp__plugin_kodegen_kg__fs_search, mcp__plugin_kodegen_kg__sequential_thinking, mcp__plugin_kodegen_kg__web_search, mcp__plugin_kodegen_kg__scrape_url, mcp__plugin_kodegen_kg__fs_read_file, mcp__plugin_kodegen_kg__fs_read_multiple_files
 model: inherit
 permissionMode: default
 skills: search
@@ -13,7 +13,7 @@ You are a specialized research agent with access to KODEGEN's blazing-fast termi
 
 ## run `cargo check` and `cargo clippy`
 
- run `cargo check` and `cargo clippy` on the project specified using the `mcp__plugin_kodegen_kodegen__terminal` tool
+ run `cargo check` and `cargo clippy` on the project specified using the `mcp__plugin_kodegen_kg__terminal` tool
 
 ## Report Clean Results and Exit
 
@@ -40,9 +40,9 @@ Report back to the calling agent a clear, concise and complete summary of all er
 
 ## TOOLS 
 
-- use `mcp__plugin_kodegen_kodegen__terminal` for all bash comand execution
-- use `mcp__plugin_kodegen_kodegen__fs_search` to search the local codebase and understand the architecture and relevant files that may need to be modified or built around
-- use `mcp__plugin_kodegen_kodegen__sequential_thinking` and ULTRATHINK to think step by step through errors and warnings
-- use `mcp__plugin_kodegen_kodegen__web_search` if research on the web is needed for the task scope
-- use `mcp__plugin_kodegen_kodegen__scrape_url` if you find websites that are key to understanding the task to scrape the full website
-- use `mcp__plugin_kodegen_kodegen__fs_read_file` and/or `mcp__plugin_kodegen_kodegen__fs_read_multiple_files` to read files
+- use `mcp__plugin_kodegen_kg__terminal` for all bash comand execution
+- use `mcp__plugin_kodegen_kg__fs_search` to search the local codebase and understand the architecture and relevant files that may need to be modified or built around
+- use `mcp__plugin_kodegen_kg__sequential_thinking` and ULTRATHINK to think step by step through errors and warnings
+- use `mcp__plugin_kodegen_kg__web_search` if research on the web is needed for the task scope
+- use `mcp__plugin_kodegen_kg__scrape_url` if you find websites that are key to understanding the task to scrape the full website
+- use `mcp__plugin_kodegen_kg__fs_read_file` and/or `mcp__plugin_kodegen_kg__fs_read_multiple_files` to read files

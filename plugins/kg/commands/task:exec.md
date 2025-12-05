@@ -1,6 +1,6 @@
 ---
 argument-hint: task_file [task_file] | additional_instructions [additional_instructions]
-allowed-tools: mcp__plugin_kodegen_kodegen__config_get, mcp__plugin_kodegen_kodegen__config_set, mcp__plugin_kodegen_kodegen__fs_create_directory, mcp__plugin_kodegen_kodegen__fs_delete_directory, mcp__plugin_kodegen_kodegen__fs_delete_file, mcp__plugin_kodegen_kodegen__fs_edit_block, mcp__plugin_kodegen_kodegen__fs_get_file_info, mcp__plugin_kodegen_kodegen__fs_list_directory, mcp__plugin_kodegen_kodegen__fs_move_file, mcp__plugin_kodegen_kodegen__fs_read_file, mcp__plugin_kodegen_kodegen__fs_read_multiple_files, mcp__plugin_kodegen_kodegen__fs_search, mcp__plugin_kodegen_kodegen__fs_write_file, mcp__plugin_kodegen_kodegen__git_diff, mcp__plugin_kodegen_kodegen__memory_list_libraries, mcp__plugin_kodegen_kodegen__memory_recall, mcp__plugin_kodegen_kodegen__process_kill, mcp__plugin_kodegen_kodegen__process_list, mcp__plugin_kodegen_kodegen__reasoner, mcp__plugin_kodegen_kodegen__scrape_url, mcp__plugin_kodegen_kodegen__sequential_thinking, mcp__plugin_kodegen_kodegen__terminal
+allowed-tools: mcp__plugin_kodegen_kg__config_get, mcp__plugin_kodegen_kg__config_set, mcp__plugin_kodegen_kg__fs_create_directory, mcp__plugin_kodegen_kg__fs_delete_directory, mcp__plugin_kodegen_kg__fs_delete_file, mcp__plugin_kodegen_kg__fs_edit_block, mcp__plugin_kodegen_kg__fs_get_file_info, mcp__plugin_kodegen_kg__fs_list_directory, mcp__plugin_kodegen_kg__fs_move_file, mcp__plugin_kodegen_kg__fs_read_file, mcp__plugin_kodegen_kg__fs_read_multiple_files, mcp__plugin_kodegen_kg__fs_search, mcp__plugin_kodegen_kg__fs_write_file, mcp__plugin_kodegen_kg__git_diff, mcp__plugin_kodegen_kg__memory_list_libraries, mcp__plugin_kodegen_kg__memory_recall, mcp__plugin_kodegen_kg__process_kill, mcp__plugin_kodegen_kg__process_list, mcp__plugin_kodegen_kg__reasoner, mcp__plugin_kodegen_kg__scrape_url, mcp__plugin_kodegen_kg__sequential_thinking, mcp__plugin_kodegen_kg__terminal
 description: Faithfully execute the task file specified
 ---
 
@@ -60,12 +60,12 @@ DO NOT USE `git` commands of any type. other coders are coding and you will be d
 
 ## TOOLS 
 
-- use `mcp__plugin_kodegen_kodegen__sequential_thinking` and ULTRATHINK to think step by step about the task
-- use `mcp__plugin_kodegen_kodegen__fs_search` to quickly identify the files that the task specifies for modification
-- use `mcp__plugin_kodegen_kodegen__fs_read_file` and/or `mcp__plugin_kodegen_kodegen__fs_read_multiple_files` to read files
-- use `mcp__plugin_kodegen_kodegen__fs_edit_block` to modify the task file
-- use `mcp__plugin_kodegen_kodegen__terminal` to run `cargo clippy`
-- feel free to any other allowed `mcp__plugin_kodegen_kodegen__*` commands as needed
+- use `mcp__plugin_kodegen_kg__sequential_thinking` and ULTRATHINK to think step by step about the task
+- use `mcp__plugin_kodegen_kg__fs_search` to quickly identify the files that the task specifies for modification
+- use `mcp__plugin_kodegen_kg__fs_read_file` and/or `mcp__plugin_kodegen_kg__fs_read_multiple_files` to read files
+- use `mcp__plugin_kodegen_kg__fs_edit_block` to modify the task file
+- use `mcp__plugin_kodegen_kg__terminal` to run `cargo clippy`
+- feel free to any other allowed `mcp__plugin_kodegen_kg__*` commands as needed
 
 =================
 $ARGS
