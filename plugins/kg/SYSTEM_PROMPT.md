@@ -1416,6 +1416,41 @@ Need entire website saved locally (minutes to hours)?
 | Current events lookup | `browser_web_search` | Fast, recent results |
 | Topic deep dive | `browser_research` | Comprehensive with AI insights |
 | Offline docs access | `scrape_url` | Complete site saved locally |
+| Quick page preview | `fetch` | Single page with syntax highlighting |
+
+# mcp__plugin_kg_kodegen__fetch
+
+Simple single-page URL fetcher with ANSI syntax-highlighted markdown output.
+
+## Parameters
+
+- `url` (string, required): URL to fetch
+
+## Example
+
+```json
+{"url": "https://docs.rs/tokio/latest/tokio/"}
+```
+
+## Output
+
+- `display`: ANSI-colored markdown for terminal display
+- `path`: Absolute file path to saved markdown
+- `search_helper`: TypeScript snippet for follow-up search
+- `url`: Fetched URL
+- `title`: Page title (if available)
+- `content_length`: Size in bytes
+
+## When to Use
+
+- Quick page preview with syntax highlighting
+- Fetch documentation for reading
+- Get single page content with search capability
+
+## When NOT to Use
+
+- Multi-page crawling - use `scrape_url` with `max_depth > 0`
+- Web search - use `web_search`
 
 # mcp__plugin_kg_kodegen__sequential_thinking
 
