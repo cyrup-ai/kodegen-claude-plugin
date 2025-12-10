@@ -1,0 +1,8 @@
+{
+  "_comment": "K",
+  "kodegen": {
+    "command": "kodegen",
+    "args": ["--no-tls", "--toolset", "core"],
+    "env": {}
+  }
+}
