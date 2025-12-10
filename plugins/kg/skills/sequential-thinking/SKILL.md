@@ -26,7 +26,6 @@ version: 0.1.0
 **Optional:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `session_id` | string | Reuse existing session |
 | `is_revision` | boolean | Marks thought as revising earlier thinking |
 | `revises_thought` | number | Which thought being reconsidered |
 | `branch_from_thought` | number | Create branch from this thought |
@@ -162,7 +161,6 @@ version: 0.1.0
 ## Output Format
 
 Each call returns:
-- `session_id`: Unique session identifier
 - `thought_number`: Current position
 - `total_thoughts`: Estimated total
 - `next_thought_needed`: Boolean
@@ -176,4 +174,4 @@ Each call returns:
 - **Branch for alternatives** - explore multiple paths
 - **Be specific** - each thought should represent clear progress
 - **Conclude properly** - set next_thought_needed: false when done
-- **Reuse sessions** - pass session_id to continue previous chain
+- **State persists automatically** - just keep calling, it remembers

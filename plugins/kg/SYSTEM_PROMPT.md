@@ -1465,7 +1465,6 @@ Simple single-page URL fetcher with ANSI syntax-highlighted markdown output.
 - `next_thought_needed` (boolean): Whether another thought step is needed
 
 **Optional:**
-- `session_id` (string): Session ID for maintaining state across calls (auto-generated if not provided)
 - `is_revision` (boolean): Whether this revises previous thinking
 - `revises_thought` (number): Which thought number is being reconsidered
 - `branch_from_thought` (number): Branching point thought number
@@ -1490,7 +1489,7 @@ Each call records one thought and returns your progress (thought N/M), branches,
 ✅ **Branching** - Explore alternative approaches from any thought  
 ✅ **Context preservation** - Complete history maintained across calls  
 ✅ **Non-linear thinking** - Not every thought needs to build sequentially  
-✅ **Session-based** - Multiple independent reasoning sessions
+✅ **Stateful** - Remembers all thoughts automatically
 
 ## Workflow
 
@@ -1502,7 +1501,7 @@ Each call records one thought and returns your progress (thought N/M), branches,
   total_thoughts: 5,
   next_thought_needed: true
 }
-// → Returns: session_id, thought 1/5 recorded
+// → Returns: thought 1/5 recorded
 
 // 2. Continue building
 {
@@ -1548,7 +1547,6 @@ Each call records one thought and returns your progress (thought N/M), branches,
 ## Output Format
 
 Each call returns:
-- `session_id`: Unique session identifier
 - `thought_number`: Current position (e.g., 3)
 - `total_thoughts`: Estimated total (e.g., 6)
 - `next_thought_needed`: Boolean indicating if more steps needed
@@ -1602,7 +1600,7 @@ Each call returns:
 3. **Branch for alternatives** - Use `branch_id` to explore multiple paths in parallel
 4. **Be specific in thoughts** - Each thought should represent clear progress
 5. **Conclude properly** - Set `next_thought_needed: false` when done
-6. **Session reuse** - Pass `session_id` to continue previous reasoning chain
+6. **Just keep calling** - State persists automatically, no setup needed
 
 ## Comparison to Direct Reasoning
 
