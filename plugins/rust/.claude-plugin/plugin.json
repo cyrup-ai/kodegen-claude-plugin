@@ -1,7 +1,7 @@
 {
   "name": "rust",
   "description": "Multi-agent task orchestration with 109 elite MCP tools",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "author": {
     "name": "KODEGEN.AI",
     "email": "support@kodegen.ai"
