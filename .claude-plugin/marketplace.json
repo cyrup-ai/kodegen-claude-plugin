@@ -17,5 +17,11 @@
       "name": "rust",
       "source": "./plugins/rust"
     }
-  ]
+  ],
+  "mcpServers": {
+    "kodegen": {
+      "command": "kodegen",
+      "args": ["--no-tls", "--toolset", "core"]
+    }
+  }
 }

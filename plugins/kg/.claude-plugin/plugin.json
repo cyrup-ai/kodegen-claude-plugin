@@ -9,7 +9,6 @@
   "homepage": "https://kodegen.ai",
   "repository": "https://github.com/cyrup-ai/kodegen-claude-plugin",
   "license": "MIT",
-  "mcpServers": "./mcp.json",
   "keywords": [
     "mcp",
     "multi-agent",
