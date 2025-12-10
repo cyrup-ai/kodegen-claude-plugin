@@ -22,15 +22,5 @@
     "task-orchestration",
     "rust",
     "code-search"
-  ],
-  "category": "developer-tools",
-  "tags": [
-    "filesystem",
-    "terminal",
-    "git",
-    "github",
-    "browser",
-    "memory",
-    "reasoning"
   ]
 }
