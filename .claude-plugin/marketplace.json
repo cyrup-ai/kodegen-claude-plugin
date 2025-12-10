@@ -6,13 +6,12 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.10.9"
+    "version": "0.10.10"
   },
   "plugins": [
     {
       "name": "kg",
-      "source": "./plugins/kg",
-      "mcpServers": "./plugins/kg/mcp.json"
+      "source": "./plugins/kg"
     },
     {
       "name": "rust",
