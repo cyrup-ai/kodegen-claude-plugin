@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.10.1",
+    "version": "0.10.2",
     "pluginRoot": "."
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "kg",
       "source": "./plugins/kg",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.10.1",
+      "version": "0.10.2",
       "author": {
         "name": "KODEGEN.AI",
         "email": "support@kodegen.ai"
@@ -22,6 +22,13 @@
       "homepage": "https://kodegen.ai",
       "repository": "https://github.com/cyrup-ai/kodegen-claude-plugin",
       "license": "MIT",
+      "mcpServers": {
+        "kodegen": {
+          "command": "kodegen",
+          "args": ["--no-tls", "--toolset", "core"],
+          "env": {}
+        }
+      },
       "keywords": [
         "mcp",
         "multi-agent",
@@ -44,7 +51,7 @@
       "name": "rust",
       "source": "./plugins/rust",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.10.1",
+      "version": "0.10.2",
       "author": {
         "name": "KODEGEN.AI",
         "email": "support@kodegen.ai"
