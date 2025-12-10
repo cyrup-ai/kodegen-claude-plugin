@@ -6,15 +6,15 @@
   },
   "metadata": {
     "description": "KODEGEN.AI plugin marketplace",
-    "version": "0.10.0",
-    "pluginRoot": "plugins"
+    "version": "0.10.1",
+    "pluginRoot": "."
   },
   "plugins": [
     {
       "name": "kg",
       "source": "./plugins/kg",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "author": {
         "name": "KODEGEN.AI",
         "email": "support@kodegen.ai"
@@ -44,7 +44,7 @@
       "name": "rust",
       "source": "./plugins/rust",
       "description": "Multi-agent task orchestration with 109 elite MCP tools",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "author": {
         "name": "KODEGEN.AI",
         "email": "support@kodegen.ai"
