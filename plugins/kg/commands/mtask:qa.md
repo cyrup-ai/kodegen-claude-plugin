@@ -1,18 +1,20 @@
 ---
-allowed-tools: Task, mcp__plugin_kg_kodegen__browser_agent, mcp__plugin_kg_kodegen__browser_research, mcp__plugin_kg_kodegen__claude_agent, mcp__plugin_kg_kodegen__config_get, mcp__plugin_kg_kodegen__config_set, mcp__plugin_kg_kodegen__fs_create_directory, mcp__plugin_kg_kodegen__fs_delete_directory, mcp__plugin_kg_kodegen__fs_delete_file, mcp__plugin_kg_kodegen__fs_edit_block, mcp__plugin_kg_kodegen__fs_get_file_info, mcp__plugin_kg_kodegen__fs_list_directory, mcp__plugin_kg_kodegen__fs_move_file, mcp__plugin_kg_kodegen__fs_read_file, mcp__plugin_kg_kodegen__fs_read_multiple_files, mcp__plugin_kg_kodegen__fs_search, mcp__plugin_kg_kodegen__fs_write_file, mcp__plugin_kg_kodegen__git_clone, mcp__plugin_kg_kodegen__git_diff, mcp__plugin_kg_kodegen__github_get_file_contents, mcp__plugin_kg_kodegen__github_search_code, mcp__plugin_kg_kodegen__github_search_issues, mcp__plugin_kg_kodegen__github_search_repositories, mcp__plugin_kg_kodegen__memory_list_libraries, mcp__plugin_kg_kodegen__memory_memorize, mcp__plugin_kg_kodegen__memory_recall, mcp__plugin_kg_kodegen__process_kill, mcp__plugin_kg_kodegen__process_list, mcp__plugin_kg_kodegen__reasoner, mcp__plugin_kg_kodegen__scrape_url, mcp__plugin_kg_kodegen__sequential_thinking, mcp__plugin_kg_kodegen__terminal, mcp__plugin_kg_kodegen__web_search
+argument-hint: number_agents [number_agents], additional_context [additional_context]
+allowed-tools: Task, mcp__plugin_kg_kodegen__browser_agent, mcp__plugin_kg_kodegen__browser_research, mcp__plugin_kg_kodegen__claude_agent, mcp__plugin_kg_kodegen__config_get, mcp__plugin_kg_kodegen__config_set, mcp__plugin_kg_kodegen__fs_create_directory, mcp__plugin_kg_kodegen__fs_delete_directory, mcp__plugin_kg_kodegen__fs_delete_file, mcp__plugin_kg_kodegen__fs_edit_block, mcp__plugin_kg_kodegen__fs_get_file_info, mcp__plugin_kg_kodegen__fs_list_directory, mcp__plugin_kg_kodegen__fs_move_file, mcp__plugin_kg_kodegen__fs_read_file, mcp__plugin_kg_kodegen__fs_read_multiple_files, mcp__plugin_kg_kodegen__fs_search, mcp__plugin_kg_kodegen__fs_write_file, mcp__plugin_kg_kodegen__git_clone, mcp__plugin_kg_kodegen__git_diff, mcp__plugin_kg_kodegen__github_get_file_contents, mcp__plugin_kg_kodegen__github_search_code, mcp__plugin_kg_kodegen__github_search_issues, mcp__plugin_kg_kodegen__github_search_repositories, mcp__plugin_kg_kodegen__memory_list_libraries, mcp__plugin_kg_kodegen__memory_memorize, mcp__plugin_kg_kodegen__memory_recall, mcp__plugin_kg_kodegen__process_kill, mcp__plugin_kg_kodegen__process_list, mcp__plugin_kg_kodegen__reasoner, mcp__plugin_kg_kodegen__scrape_url, mcp__plugin_kg_kodegen__sequential_thinking, mcp__plugin_kg_kodegen__terminal, mcp__plugin_kg_kodegen__web_search,mcp__plugin_kg_kodegen__fetch
 description: Use sub-agents to qa code review task files in parallel
 ---
 # DELEGATE TASK EXECUTION TO SUB-AGENTS
 
 use the `Task` tool (subagents) to execute IN PARALLEL each of the tasks in `task/*.md`
+*NEVER* run the agents in the background. always run them in the foreground.
 
 ## IN PARALLEL
 
-Identify 10 task files to delegate execution in parallel (or N numer < 10 in none exist)
+Identify $1 task files to delegate execution in parallel (or N numer < $1 in less than $1 exist)
 
 ## CONTINUING AS COMPLETED
 
-*manage 10 sub-agents at at a time*
+*manage $1 sub-agents at at a time*
 
 - spawn new subagents as the initial ones complete 
 - continue spawning until all tasks in the `task/*.md` dir are reported as completed by the sub-agents.  
@@ -34,7 +36,7 @@ Act as an objective rust expert QA code reviewer.
 
 ## INSTRUCTIONS 
 
-Rate the imlementation of the following requirements on a scale of 1-10 
+Rate the imlementation of the following requirements on a scale of 1-10
 
 {{absolute_file_path}}
 
