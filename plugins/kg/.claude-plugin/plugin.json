@@ -1,7 +1,7 @@
 {
   "name": "kg",
   "description": "Multi-agent task orchestration with 109 elite MCP tools",
-  "version": "0.10.15",
+  "version": "0.10.16",
   "author": {
     "name": "KODEGEN.AI",
     "email": "support@kodegen.ai"

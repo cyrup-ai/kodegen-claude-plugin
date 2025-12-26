@@ -198,6 +198,89 @@ Use ripgrep's built-in file type definitions:
 
 Common types: `rust`, `python`, `javascript`, `typescript`, `json`, `markdown`, `yaml`, `toml`
 
+### pattern_mode (Filename Search Only)
+
+**IMPORTANT**: This parameter ONLY works with `search_in: "filenames"`. It has NO effect on content searches.
+
+Control how filename patterns are interpreted:
+
+```json
+// Auto-detection (default)
+{
+  "search_in": "filenames",
+  "pattern": "*.md"
+}
+// → Auto-detected as Glob, matches: README.md, NOTES.md
+
+// Force regex interpretation
+{
+  "search_in": "filenames",
+  "pattern": "test.*",
+  "pattern_mode": "regex"
+}
+// → Regex mode, matches: test.js, test123.md, testing.txt
+
+// Force substring (literal match)
+{
+  "search_in": "filenames",
+  "pattern": "*.md",
+  "pattern_mode": "substring"
+}
+// → Substring mode, matches ONLY files literally named "*.md"
+
+// Force glob interpretation
+{
+  "search_in": "filenames",
+  "pattern": "lib",
+  "pattern_mode": "glob"
+}
+// → Glob mode, uses shell-style matching
+```
+
+**Auto-Detection Priority**: Regex > Glob > Substring
+
+**Detection Rules**:
+- **Regex detected** when pattern contains: `^`, `$`, `\.`, `\d`, `\w`, `.*`, `.+`, `|`, `[...]+`, `{n,m}`
+- **Glob detected** when pattern contains: `*`, `?`, `**`, `{a,b}`, `[abc]` (without regex markers)
+- **Substring** (default): No special characters detected
+
+**Common Use Cases**:
+```json
+// Find markdown files (auto-detected as glob)
+{"search_in": "filenames", "pattern": "*.md"}
+// → pattern_type: "glob"
+
+// Find files starting with "test" (auto-detected as regex)
+{"search_in": "filenames", "pattern": "^test"}
+// → pattern_type: "regex"
+
+// Find files containing "config" (auto-detected as substring)
+{"search_in": "filenames", "pattern": "config"}
+// → pattern_type: "substring"
+
+// Override: match literal "*.md" filename
+{"search_in": "filenames", "pattern": "*.md", "pattern_mode": "substring"}
+// → pattern_type: "substring", matches file literally named "*.md"
+```
+
+**Output Field: pattern_type**
+
+Every filename search response includes `pattern_type` showing how the pattern was interpreted:
+
+```json
+{
+  "pattern": "*.rs",
+  "pattern_type": "glob",
+  "search_in": "filenames",
+  "results": [...]
+}
+```
+
+This helps you understand:
+- Whether auto-detection worked as expected
+- Why certain files matched or didn't match
+- If you need to override with `pattern_mode`
+
 ## Performance Optimization
 
 ### For Large Codebases
@@ -385,6 +468,13 @@ Returns just the URLs, not the entire lines containing them.
 2. **Or use literal search:** `literal_search: true`
 3. **For multiline patterns:** set `multiline: true`
 4. **Check boundaries:** adjust `boundary_mode` if needed
+
+### Pattern Not Matching Expected Files
+
+1. **Check pattern_type in response** → See how pattern was interpreted
+2. **Override auto-detection** → Use `pattern_mode: "regex"`, `"glob"`, or `"substring"`
+3. **Remember**: Only works for `search_in: "filenames"`, not content search
+4. **Literal characters**: Use `pattern_mode: "substring"` or `literal_search: true`
 
 ## Quick Reference
 

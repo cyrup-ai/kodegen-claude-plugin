@@ -46,7 +46,6 @@ then, execute the task in $1 exactly as outlined*.
 ## OUTPUT
 
 - print "I've completed and verified 100% of the requirements in $1 are fully implemented in production grade quality"
-- print "I've confirmed that I did not use unwrap() or expect() in my implementation" 
 - print "I'm ready for a full and detailed QA review of my work with full confidence it will score 10/10 for production readiness based on the task description."
 - print the full path: $1
 

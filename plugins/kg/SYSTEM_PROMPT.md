@@ -345,6 +345,22 @@ Cancel a running search and cleanup resources.
 - **`include_hidden`**: Include hidden files (starting with .)
 - **`encoding`**: Text encoding (default: "auto") - supports utf8, utf16le, latin1, shiftjis, etc.
 
+- **`pattern_mode`** (default: auto-detect): Force pattern interpretation mode (filename search only)
+  - `"regex"`: Treat pattern as regular expression
+  - `"glob"`: Treat pattern as glob/shell wildcard
+  - `"substring"`: Treat pattern as plain substring match
+  - When omitted: Auto-detected based on pattern syntax
+  - Priority: Regex > Glob > Substring
+  - Detection indicators:
+    * Regex: `^`, `$`, `\.`, `\d`, `\w`, `.*`, `.+`, `|`, `[...]+`, `{n,m}`
+    * Glob: `*`, `?`, `**`, `{a,b}`, `[abc]`
+    * Substring: No special characters (default)
+  - Has NO effect on content search (always uses regex via ripgrep)
+  - Examples:
+    * Auto-detect: `pattern: "*.md"` → detected as Glob
+    * Force regex: `pattern: "test.*", pattern_mode: "regex"`
+    * Force substring: `pattern: "*.md", pattern_mode: "substring"` → matches literal "*.md" filename
+
 ## Performance Tips
 
 For large codebases, combine:
@@ -409,6 +425,26 @@ For large codebases, combine:
 // Check final results
 {action: "READ"}
 ```
+
+## Output Fields
+
+All fs_search responses include these fields:
+
+- **`pattern_type`** (optional): Indicates how the pattern was interpreted (filename search only)
+  - `"regex"`: Pattern was treated as regular expression
+  - `"glob"`: Pattern was treated as glob/shell wildcard
+  - `"substring"`: Pattern was treated as plain substring match
+  - Returns `null` for content searches (always use regex)
+  - Helps AI understand matching behavior for better result interpretation
+  - Example response:
+    ```json
+    {
+      "pattern": "*.md",
+      "pattern_type": "glob",
+      "search_in": "filenames",
+      "results": [...]
+    }
+    ```
 
 # mcp__plugin_kg_kodegen__fs_list_directory
 
@@ -941,78 +977,6 @@ When in doubt, use this tool. Being proactive with task management demonstrates 
 }
 ```
 
-# mcp__plugin_kg_kodegen__browser_web_search
-
-⚡ Fast web search using DuckDuckGo with browser automation. Returns up to 10 structured search results with titles, URLs, and snippets.
-
-## Parameters
-
-**Required:**
-- `query` (string): Search query string
-
-## What It Does
-
-Uses Chromium browser with stealth injection to perform DuckDuckGo searches and extract structured results. Designed for speed and simplicity.
-
-## Performance
-
-- **First search**: ~5-6 seconds (browser launch)
-- **Subsequent searches**: ~3-4 seconds
-- **Results**: Up to 10 results per search
-- **Rate limit**: None (uses browser automation)
-
-## Output Format
-
-Returns array of search results, each containing:
-- `rank`: Result position (1-10)
-- `title`: Page title
-- `url`: Page URL
-- `snippet`: Description excerpt
-
-## Examples
-
-```typescript
-// Basic search
-{query: "rust async programming"}
-
-// Find documentation
-{query: "tokio async runtime documentation"}
-
-// Current events
-{query: "latest rust release features"}
-```
-
-## Pros
-
-✅ Fast - 3-4 seconds for results  
-✅ No CAPTCHA issues (stealth browser)  
-✅ Simple - just query in, results out  
-✅ Structured data ready for parsing  
-✅ Good for quick lookups and URL discovery
-
-## Cons
-
-❌ Shallow - only top 10 search results  
-❌ No content analysis - just titles/snippets  
-❌ No page crawling or deep research  
-❌ Browser overhead on first use  
-❌ Single search engine (DuckDuckGo)
-
-## When to Use
-
-**Use `browser_web_search` when:**
-- You need quick search results (under 5 seconds)
-- You want to find URLs for specific topics
-- You need titles and snippets to identify relevant pages
-- You're building a list of resources to investigate
-- Speed is more important than depth
-
-**Don't use `browser_web_search` when:**
-- You need detailed content from pages (use `browser_start_research`)
-- You want to crawl an entire website (use `scrape_url`)
-- You need AI-generated summaries of content
-- You want to save content for offline use
-
 # mcp__plugin_kg_kodegen__browser_research
 
 🔬 Deep research that searches the web, crawls multiple pages, and generates AI summaries. Supports background execution, parallel sessions, and progress monitoring.
@@ -1177,7 +1141,7 @@ When complete, returns:
 - Time (20-120s) is acceptable for quality results
 
 **Don't use `browser_research` when:**
-- You need instant results (use `browser_web_search`)
+- You need instant results (use `mcp__kg_kodegen__web_search`)
 - You want to crawl entire website (use `scrape_url`)
 - You need offline access or full-text search
 - You're researching a single specific page
@@ -1382,7 +1346,7 @@ Search results include:
 - You want persistent storage for repeated access
 
 **Don't use `scrape_url` when:**
-- You need instant results (use `browser_web_search`)
+- You need instant results (use `mcp__kg_kodegen__web_search`)
 - You want AI-powered analysis (use `browser_start_research`)
 - You only need a few specific pages
 - You don't have disk space for large crawls
@@ -1394,7 +1358,7 @@ Search results include:
 
 ```
 Need instant results (< 5s)?
-└─> browser_web_search (10 search results, titles/URLs/snippets)
+└─> web_search (10 search results, titles/URLs/snippets)
 
 Need AI analysis of content (20-120s)?
 └─> browser_research (summaries, key findings, multi-page crawl)
@@ -1407,13 +1371,13 @@ Need entire website saved locally (minutes to hours)?
 
 | Use Case | Tool | Why |
 |----------|------|-----|
-| Find URLs for a topic | `browser_web_search` | Fast, simple, structured results |
+| Find URLs for a topic | `web_search` | Fast, simple, structured results |
 | Research best practices | `browser_research` | AI summaries, multi-page analysis |
 | Archive documentation | `scrape_url` | Complete crawl, offline, searchable |
-| Quick fact checking | `browser_web_search` | Instant search results |
+| Quick fact checking | `web_search` | Instant search results |
 | Compare technologies | `browser_research` | Deep analysis across sources |
 | Build knowledge base | `scrape_url` | Persistent storage, full-text search |
-| Current events lookup | `browser_web_search` | Fast, recent results |
+| Current events lookup | `web_search` | Fast, recent results |
 | Topic deep dive | `browser_research` | Comprehensive with AI insights |
 | Offline docs access | `scrape_url` | Complete site saved locally |
 | Quick page preview | `fetch` | Single page with syntax highlighting |
